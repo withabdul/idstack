@@ -191,7 +191,7 @@ Before starting, check for an existing project manifest.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -323,7 +323,7 @@ That line gives the section heading and the table columns.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -344,7 +344,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -381,7 +381,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -420,7 +420,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -458,7 +458,7 @@ Check for session history and learnings from prior runs.
 ```bash
 # Context recovery: timeline + learnings
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -510,7 +510,7 @@ this is the default.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -537,7 +537,7 @@ Search learnings by keyword. Supports `--cross-project` to include global learni
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -555,7 +555,7 @@ IDSTACK_KEYWORD
 For cross-project search:
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -578,7 +578,7 @@ Delete the most recent local learning with this key. Older local entries with th
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -599,7 +599,7 @@ Copy a local learning to the global store so it's available across projects.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -620,7 +620,7 @@ Export the local learnings of this project (the latest 1000) to a markdown file.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -640,7 +640,7 @@ every learning with the type `operational`. If the learnings have more than one
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)

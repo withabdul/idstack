@@ -348,8 +348,19 @@ RESOLVE_SIM=$(mktemp -d)
 mkdir -p "$RESOLVE_SIM/plugin" "$RESOLVE_SIM/home/.claude/plugins/cache/idstack/idstack/0.0.1.0"
 RESOLVE_SIM_GOT=$({ awk '/^_IDSTACK=""$/{f=1} f{print} f && /^done$/{exit}' "$IDSTACK_DIR/skills/learn/SKILL.md" \
     | sed "s|\${CLAUDE_PLUGIN_ROOT}|$RESOLVE_SIM/plugin|g"; echo 'printf "%s" "$_IDSTACK"'; } \
-  | env -u CLAUDE_PLUGIN_ROOT -u IDSTACK_HOME HOME="$RESOLVE_SIM/home" bash)
+  | env -u CLAUDE_PLUGIN_ROOT -u IDSTACK_HOME -u CLAUDE_CONFIG_DIR HOME="$RESOLVE_SIM/home" bash)
 check "the substituted plugin root wins over a stale cache install" "[ '$RESOLVE_SIM_GOT' = '$RESOLVE_SIM/plugin' ]"
+# With no plugin root, the cache fallback reads CLAUDE_CONFIG_DIR when it is set
+# (a second Claude Code config dir), and ~/.claude when it is not.
+mkdir -p "$RESOLVE_SIM/work/plugins/cache/idstack/idstack/0.0.2.0"
+RESOLVE_SIM_CHAIN=$(awk '/^_IDSTACK=""$/{f=1} f{print} f && /^done$/{exit}' "$IDSTACK_DIR/skills/learn/SKILL.md" \
+  | sed 's|\${CLAUDE_PLUGIN_ROOT}||g'; echo 'printf "%s" "$_IDSTACK"')
+RESOLVE_SIM_GOT=$(printf '%s\n' "$RESOLVE_SIM_CHAIN" \
+  | env -u CLAUDE_PLUGIN_ROOT -u IDSTACK_HOME HOME="$RESOLVE_SIM/home" CLAUDE_CONFIG_DIR="$RESOLVE_SIM/work" bash)
+check "the cache fallback reads CLAUDE_CONFIG_DIR" "[ '$RESOLVE_SIM_GOT' = '$RESOLVE_SIM/work/plugins/cache/idstack/idstack/0.0.2.0' ]"
+RESOLVE_SIM_GOT=$(printf '%s\n' "$RESOLVE_SIM_CHAIN" \
+  | env -u CLAUDE_PLUGIN_ROOT -u IDSTACK_HOME -u CLAUDE_CONFIG_DIR HOME="$RESOLVE_SIM/home" bash)
+check "the cache fallback uses ~/.claude without CLAUDE_CONFIG_DIR" "[ '$RESOLVE_SIM_GOT' = '$RESOLVE_SIM/home/.claude/plugins/cache/idstack/idstack/0.0.1.0' ]"
 rm -rf "$RESOLVE_SIM"
 check "no resolve chain gives the plugin root a default" "! grep -rlF '\${CLAUDE_PLUGIN_ROOT:-' '$IDSTACK_DIR/templates' $IDSTACK_DIR/skills/*/SKILL.md.tmpl $IDSTACK_DIR/skills/*/SKILL.md"
 

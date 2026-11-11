@@ -7,7 +7,8 @@ _IDSTACK=""
 # Marketplace cache holds one dir per installed version. Sort the basenames by
 # numeric version fields, not lexically — plain sort ranks 3.9.0.0 above
 # 3.10.0.0 and would pick a stale install once the minor hits double digits.
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+# Claude Code keeps its config in CLAUDE_CONFIG_DIR when the user sets it.
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)

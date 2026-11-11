@@ -21,6 +21,7 @@ Reports and the course dashboard are now Markdown files. Each skill gives a repo
 
 ### Fixed
 
+- **The skills find the plugin cache when Claude Code uses a different config folder.** The last fallback in the resolve chain read only `~/.claude/plugins/cache`. It now reads `$CLAUDE_CONFIG_DIR/plugins/cache` when `CLAUDE_CONFIG_DIR` is set, and `~/.claude` when it is not. Two smoke-test checks cover the two cases.
 - **Course text cannot run as a shell command.** An audit found that some skill steps put text from a course into a shell command. A title, a file name or a SCORM link that contains `$(...)` or a backtick ran as a command.
   - `/idstack:course-export` writes each title and each HTML body to a file in `.idstack/canvas-push/`, and curl sends the file. A `$`, a backtick, `&` or `+` gets to Canvas with no change. Before, `Q&A` got to Canvas as `Q`.
   - `/idstack:course-import` reads each file path, each SCORM link and the project name with a quoted heredoc. It does not read a SCORM link that starts with `/` or that contains `..`. It also does not read a file that a symbolic link puts out of the import folder.

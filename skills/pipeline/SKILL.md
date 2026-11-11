@@ -196,7 +196,7 @@ Before starting, check for an existing project manifest.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -328,7 +328,7 @@ That line gives the section heading and the table columns.
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -349,7 +349,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -386,7 +386,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -425,7 +425,7 @@ if [ ! -x "$_IDSTACK/bin/idstack-report-section" ]; then echo "REPORT_SECTION_MI
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -463,7 +463,7 @@ Check for session history and learnings from prior runs.
 ```bash
 # Context recovery: timeline + learnings
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -522,7 +522,7 @@ Read `.idstack/timeline.jsonl` to find skills with `"event": "completed"` entrie
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -620,7 +620,7 @@ After each skill completes (or after the orchestrator finishes the run, includin
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -670,7 +670,7 @@ Each time this step runs, it overwrites the dashboard — historical dashboards 
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
@@ -695,7 +695,7 @@ When all remaining skills have been executed:
 
 ```bash
 _IDSTACK=""
-_idstack_cache_root="$HOME/.claude/plugins/cache/idstack/idstack"
+_idstack_cache_root="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins/cache/idstack/idstack"
 _idstack_cache=""
 if [ -d "$_idstack_cache_root" ]; then
   _idstack_v=$(ls "$_idstack_cache_root" 2>/dev/null | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1)
